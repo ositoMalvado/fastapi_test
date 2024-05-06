@@ -10,7 +10,8 @@ class TextInput(ft.TextField):
 async def main(page: ft.Page):
     await page.add_async(
         TextInput(label="Hello, Flet!"),
-        TextInput(label="Chau Flet!")
+        TextInput(label="Chau Flet!"),
+        TextInput(label="Busca un pokemon")
     )
 
 app = flet_fastapi.app(main)
