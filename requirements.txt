@@ -1,2 +1,3 @@
 ﻿flet
 flet_fastapi
+uvicorn
