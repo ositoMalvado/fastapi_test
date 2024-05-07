@@ -6,17 +6,17 @@ class PokeImage(ft.Container):
 
 
     async def change_pokemon(self, e):
-        if e.control.data == 'anterior':
+        if e.control.data == 'anterior' or e == 'anterior':
             if self.poke_index == 1:
                 self.poke_index = self.max_index
             else:
                 self.poke_index -= 1
-        elif e.control.data == 'siguiente':
+        elif e.control.data == 'siguiente' or e == 'siguiente':
             if self.poke_index == self.max_index:
                 self.poke_index = 1
             else:
                 self.poke_index += 1
-        elif e.control.data == 'random':
+        elif e.control.data == 'random' or e == 'random':
             self.poke_index = random.randint(1, self.max_index)
             
         await self.update_pokemon()
@@ -85,9 +85,10 @@ async def main(page: ft.Page):
     page.padding = 0
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     page.vertical_alignment = ft.MainAxisAlignment.START
+    mi_comp = PokeImage()
     await page.add_async(
-        PokeImage()
+        mi_comp
     )
 
-app = flet_fastapi.app(main)
-# ft.app(target=main)
+# app = flet_fastapi.app(main)
+ft.app(target=main)
